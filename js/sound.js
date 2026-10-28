@@ -125,6 +125,15 @@ const Sound=(()=>{
       hiss(t+.35,.6,{f0:3200,f1:2400,q:.6,peak:.2,curve:friction(32)});
       hiss(t+.95,.12,{type:'lowpass',f0:500,q:.7,peak:.4,attack:.008});
     },
+    rip(){                                                                              // 띠지가 조금씩 찢어지는 소리
+      if(!ready())return; const t=ctx.currentTime+.01;
+      crackle(t,.12,9,.42); hiss(t,.14,{f0:2200,f1:3800,q:.9,peak:.16,attack:.01});
+    },
+    page(){                                                                             // 책장이 들리고 넘어가는 소리
+      if(!ready())return; const t=ctx.currentTime+.01;
+      hiss(t,.6,{f0:2300,f1:3300,q:.6,peak:.2,curve:friction(24)});
+      crackle(t,.45,7,.12); hiss(t+.55,.1,{type:'lowpass',f0:600,q:.7,peak:.22,attack:.008});
+    },
     toggle(){
       muted=!muted; try{localStorage.setItem('letter-muted',muted?'1':'0')}catch(e){}
       if(muted){

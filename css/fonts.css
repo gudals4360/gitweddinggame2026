@@ -57,3 +57,9 @@ body{font-family:"OngleIpSeaBreeze","온글잎 바닷바람","Gowun Batang",seri
 footer{font-size:.95rem;font-weight:300;letter-spacing:.06em;line-height:2}
 @media (max-width:480px){.stamp-tip{font-size:.72rem}}
 @media (max-width:480px){.card p{line-height:1.95}}
+
+/* ───── 사진첩 : 띠지와 손으로 넘기기 ───── */
+.band small{display:block;font-size:.5rem;font-weight:700;letter-spacing:.3em}
+.band b{font-size:.8rem;font-weight:700;letter-spacing:.02em}
+.band-tab{font:inherit;font-size:.62rem;font-weight:700;letter-spacing:.12em}
+.drag-hint{font-size:.78rem;letter-spacing:.12em}

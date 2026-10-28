@@ -85,8 +85,19 @@
   <button class="album-close" id="albumClose" aria-label="사진첩 닫기">✕</button>
   <div class="album-wrap">
     <div class="album-kicker">OUR DAYS</div>
+    <div class="book-holder">
     <div class="book" id="book" data-s="0">
       <div class="board-l"></div><div class="board-r"></div>
+
+      <!-- 띠지 : 오른쪽 손잡이를 잡아당기면 뜯어짐 -->
+      <div class="band" id="band" hidden>
+        <div class="band-part top-in"><small>SEALED WITH LOVE</small><b>띠지를 잡아당겨 뜯어 주세요</b></div>
+        <div class="band-part top-out" aria-hidden="true"><small>SEALED WITH LOVE</small><b>띠지를 잡아당겨 뜯어 주세요</b></div>
+        <div class="band-part bot-in"></div><div class="band-part bot-out"></div>
+        <div class="tape"></div>
+        <svg class="loose" aria-hidden="true"><path class="loose-t" d=""/><path class="loose-s" d=""/></svg>
+        <button class="band-tab" id="bandTab" aria-label="띠지를 뜯어 사진첩 열기">PULL</button>
+      </div>
 
       <div class="leaf">
         <div class="face cover"><div class="frame-in"><small>A PHOTO ALBUM</small><b>Our<br>Days</b><i>Christian ♡ Roxane</i></div><div class="ribbon-bm"></div></div>
@@ -113,12 +124,14 @@
         <div class="face back backcover"><div class="frame-in"><small>THE END</small><b>Christian<br>♡<br>Roxane</b></div></div>
       </div>
     </div>
+    </div>
     <div class="album-nav">
       <button id="prevPhoto" aria-label="이전 페이지">←</button>
       <div class="dots" id="dots"></div>
       <button id="nextPhoto" aria-label="다음 페이지">→</button>
     </div>
     <div class="count" id="count"></div>
+    <div class="drag-hint off" id="dragHint">책장 모서리를 잡고 넘겨 보세요</div>
     <button class="replay" id="replay" hidden>↺ 처음부터 다시 보기</button>
   </div>
 </div>
