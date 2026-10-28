@@ -11,6 +11,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <style>
 @font-face{
   font-family:"OngleIpSeaBreeze";
@@ -99,9 +100,64 @@ body.read #letter-wrap{display:block}
 .again{display:block;margin:60px auto 0;background:none;border:1px solid #3a4a4c;color:var(--mint);
   padding:11px 26px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:300;letter-spacing:.2em;cursor:pointer;transition:background .3s}
 .again:hover{background:rgba(191,224,227,.1)}
+/* ───── 우표 → 사진첩 유도 ───── */
+button.stamp{background:none;border:0;padding:0;cursor:pointer;transition:filter .3s}
+.card .album-btn{--hole:#000}
+.album-btn:hover{filter:drop-shadow(0 0 16px rgba(191,224,227,.9))}
+.card:not(.seen) .album-btn{animation:wobble 4.2s ease-in-out 1.4s infinite}
+@keyframes wobble{
+  0%,58%,100%{transform:rotate(8deg) scale(1)}
+  64%{transform:rotate(15deg) scale(1.09)}
+  70%{transform:rotate(1deg) scale(1.09)}
+  76%{transform:rotate(13deg) scale(1.05)}
+  84%{transform:rotate(8deg) scale(1)}}
+.album-btn::after{content:"";position:absolute;inset:-8px;border:2px solid var(--mint);border-radius:8px;opacity:0;pointer-events:none}
+.card:not(.seen) .album-btn::after{animation:ring 2.4s ease-out 1.4s infinite}
+@keyframes ring{0%{opacity:.9;transform:scale(.92)}100%{opacity:0;transform:scale(1.25)}}
+.sp{position:absolute;pointer-events:none;color:#fff;font-style:normal;font-size:16px;line-height:1;opacity:0;text-shadow:0 0 8px var(--mint)}
+.sp::before{content:"✦"}
+.sp.s1{left:-12px;top:6px}.sp.s2{right:-10px;bottom:10px;font-size:12px}.sp.s3{right:4px;top:-12px;font-size:11px}
+.card:not(.seen) .sp{animation:twinkle 2.2s ease-in-out 1.4s infinite}
+.sp.s2{animation-delay:2s !important}.sp.s3{animation-delay:2.6s !important}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1.2) rotate(40deg)}}
+.stamp-tip{position:absolute;right:98px;top:-26px;z-index:9;background:var(--mint);color:var(--ink);
+  font-size:.78rem;font-weight:700;letter-spacing:.02em;padding:8px 14px;border-radius:999px;white-space:nowrap;
+  animation:nudge 1.6s ease-in-out 1.4s infinite;pointer-events:none}
+.stamp-tip::after{content:"";position:absolute;right:-6px;top:50%;margin-top:-6px;border:6px solid transparent;border-left:8px solid var(--mint);border-right:0}
+@keyframes nudge{50%{transform:translateX(6px)}}
+.card.seen .stamp-tip{display:none}
+.album-pill{display:block;margin:20px auto 0;background:none;border:1px solid var(--mint-deep);color:#2d6a70;
+  padding:8px 18px;border-radius:999px;font:inherit;font-size:.8rem;font-weight:500;cursor:pointer;transition:background .3s}
+.album-pill:hover{background:var(--mint)}
+
+/* ───── 사진첩 ───── */
+.album{position:fixed;inset:0;z-index:50;display:none;place-items:center;background:rgba(0,0,0,.94);padding:16px}
+.album.show{display:grid;animation:fade .35s ease}
+@keyframes fade{from{opacity:0}}
+.album-wrap{width:min(440px,100%,calc((100vh - 250px)*.8));min-width:min(260px,100%);text-align:center;color:#fff}
+.album-kicker{font-size:.72rem;font-weight:700;letter-spacing:.34em;color:var(--mint);margin-bottom:14px}
+.photo-stage{position:relative;touch-action:pan-y}
+.slide{display:none;background:#fff;padding:12px 12px 62px;position:relative;box-shadow:0 24px 70px rgba(191,224,227,.14)}
+.slide.on{display:block;animation:flip .55s cubic-bezier(.3,.7,.2,1)}
+@keyframes flip{from{opacity:0;transform:translateX(var(--dir,30px)) rotate(3deg)}}
+.slide:nth-child(odd){transform:rotate(-1.4deg)}.slide:nth-child(even){transform:rotate(1.2deg)}
+.frame{aspect-ratio:4/5;background:#0e1a1c;overflow:hidden}
+.frame svg,.frame img{display:block;width:100%;height:100%;object-fit:cover}
+.slide figcaption{position:absolute;left:12px;right:12px;bottom:12px;height:50px;display:grid;align-content:center;color:var(--ink)}
+.slide figcaption b{font-size:.95rem;font-weight:700}
+.slide figcaption span{font-size:.76rem;font-weight:300;color:#555;margin-top:2px}
+.album-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:24px}
+.album-nav button{width:42px;height:42px;border-radius:50%;border:1px solid #3a4a4c;background:none;color:var(--mint);font-size:1.1rem;cursor:pointer;transition:background .3s}
+.album-nav button:hover{background:rgba(191,224,227,.14)}
+.dots{display:flex;gap:8px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#3a4a4c;transition:all .3s;cursor:pointer}
+.dots i.on{background:var(--mint);width:22px;border-radius:4px}
+.album-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid #3a4a4c;background:none;color:#fff;font-size:1.3rem;cursor:pointer}
+.album-close:hover{background:rgba(255,255,255,.1)}
+.count{margin-top:12px;font-size:.72rem;font-weight:300;letter-spacing:.2em;color:#7d9193}
 footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.95rem;font-weight:300;letter-spacing:.06em;line-height:2}
-@media (max-width:480px){.card > .stamp{right:-6px;width:74px;height:92px}.card p{line-height:1.95}}
-@media (prefers-reduced-motion:reduce){.ribbon div,.hint{animation:none}.card{animation:none}}
+@media (max-width:480px){.card > .stamp{right:-6px;width:74px;height:92px}.stamp-tip{right:76px;top:-22px;font-size:.72rem}.card p{line-height:1.95}}
+@media (prefers-reduced-motion:reduce){.ribbon div,.hint,.stamp-tip,.sp,.album-btn,.album-btn::after{animation:none !important}.card{animation:none}}
 </style>
 </head>
 <body>
@@ -142,11 +198,13 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.95rem;font-wei
 
   <div id="letter-wrap">
     <article class="card">
-      <div class="stamp" aria-hidden="true"><svg><use href="#stamp-art"/></svg></div>
+      <span class="stamp-tip" aria-hidden="true">우표를 눌러 보세요</span>
+      <button class="stamp album-btn" id="stampBtn" aria-label="두 사람의 추억 사진첩 열기"><svg><use href="#stamp-art"/></svg><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></button>
       <div class="ribbon"><div><span>Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ </span><span>Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ </span></div></div>
       <div class="inner">
         <div class="kicker">A LETTER OF PROPOSAL</div>
         <div class="sub">From. Christian &nbsp;/&nbsp; To. Roxane</div>
+        <button class="album-pill" id="albumPill">우리의 사진첩 보기</button>
         <h1 class="title">Dear<br>Roxane</h1>
         <div class="to">사랑하는 록산느에게,</div>
     <p class="first">오늘 밤, 이 편지를 펼친 당신의 손끝에 제 마음이 먼저 닿기를 바랍니다. 저는 크리스티앙입니다. 말보다 가슴이 먼저 뛰는 사람, 당신 앞에서는 가장 아끼는 단어마저 도망쳐 버리는 사람입니다. 그래서 오래 망설인 끝에, 가장 정직한 방식으로 이 글을 씁니다.</p>
@@ -166,6 +224,33 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.95rem;font-wei
     </footer>
   </div>
 </main>
+
+<!-- 사진첩: photos/1~5.jpg 를 교체하고 figcaption 문구를 수정하세요 -->
+<div class="album" id="album" role="dialog" aria-modal="true" aria-label="추억 사진첩" hidden>
+  <button class="album-close" id="albumClose" aria-label="사진첩 닫기">✕</button>
+  <div class="album-wrap">
+    <div class="album-kicker">OUR DAYS</div>
+    <div class="photo-stage" id="photoStage">
+      <figure class="slide"><div class="frame"><img src="photos/1.jpg" alt="정원에서 서로를 마주 보는 두 사람" style="object-position:50% 30%" draggable="false"></div>
+        <figcaption><b>가까이, 더 가까이</b><span>서로의 눈 속에 내가 비치던 순간</span></figcaption></figure>
+      <figure class="slide"><div class="frame"><img src="photos/2.jpg" alt="손을 잡고 웃으며 정원을 달리는 두 사람" style="object-position:50% 30%" draggable="false"></div>
+        <figcaption><b>손잡고 달리던 오후</b><span>이유 없이 웃음이 터지던 날</span></figcaption></figure>
+      <figure class="slide"><div class="frame"><img src="photos/3.jpg" alt="촛불 곁에서 편지를 함께 읽는 두 사람" style="object-position:50% 40%" draggable="false"></div>
+        <figcaption><b>촛불 아래의 편지</b><span>머리를 맞대고 함께 읽던 한 장의 마음</span></figcaption></figure>
+      <figure class="slide"><div class="frame"><img src="photos/4.jpg" alt="노을 진 언덕에서 도시를 내려다보는 두 사람의 뒷모습" style="object-position:38% 50%" draggable="false"></div>
+        <figcaption><b>노을 지는 언덕</b><span>말없이 같은 곳을 바라보던 저녁</span></figcaption></figure>
+      <figure class="slide"><div class="frame"><img src="photos/5.jpg" alt="서로의 얼굴을 감싸 안은 두 사람" style="object-position:55% 40%" draggable="false"></div>
+        <figcaption><b>숨결이 닿던 순간</b><span>가장 가까이에서 마주한 서로</span></figcaption></figure>
+    </div>
+    <div class="album-nav">
+      <button id="prevPhoto" aria-label="이전 사진">←</button>
+      <div class="dots" id="dots"></div>
+      <button id="nextPhoto" aria-label="다음 사진">→</button>
+    </div>
+    <div class="count" id="count"></div>
+  </div>
+</div>
+
 <script>
   const env=document.getElementById('envelope');
   env.addEventListener('click',()=>{
@@ -173,6 +258,46 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.95rem;font-wei
     env.classList.add('open');
     document.getElementById('stage').classList.add('opened');
     setTimeout(()=>{document.body.classList.add('read');window.scrollTo({top:0,behavior:'smooth'});},2300);
+  });
+  /* ── 사진첩 ── */
+  const album=document.getElementById('album');
+  const slides=[...album.querySelectorAll('.slide')];
+  const dotsEl=document.getElementById('dots');
+  const card=document.querySelector('.card');
+  let cur=0;
+  slides.forEach((_,k)=>{const d=document.createElement('i');d.addEventListener('click',()=>show(k));dotsEl.appendChild(d);});
+  function show(n,dir){
+    cur=(n+slides.length)%slides.length;
+    album.style.setProperty('--dir',(dir||1)*30+'px');
+    slides.forEach((s,k)=>s.classList.toggle('on',k===cur));
+    [...dotsEl.children].forEach((d,k)=>d.classList.toggle('on',k===cur));
+    document.getElementById('count').textContent=(cur+1)+' / '+slides.length;
+  }
+  function openAlbum(){
+    album.hidden=false;album.classList.add('show');document.body.style.overflow='hidden';
+    card.classList.add('seen');show(0);document.getElementById('albumClose').focus();
+  }
+  function closeAlbum(){
+    album.classList.remove('show');album.hidden=true;document.body.style.overflow='';
+    document.getElementById('stampBtn').focus();
+  }
+  document.getElementById('stampBtn').addEventListener('click',openAlbum);
+  document.getElementById('albumPill').addEventListener('click',openAlbum);
+  document.getElementById('albumClose').addEventListener('click',closeAlbum);
+  document.getElementById('prevPhoto').addEventListener('click',()=>show(cur-1,-1));
+  document.getElementById('nextPhoto').addEventListener('click',()=>show(cur+1,1));
+  album.addEventListener('click',e=>{if(e.target===album)closeAlbum();});
+  document.addEventListener('keydown',e=>{
+    if(!album.classList.contains('show'))return;
+    if(e.key==='Escape')closeAlbum();
+    if(e.key==='ArrowLeft')show(cur-1,-1);
+    if(e.key==='ArrowRight')show(cur+1,1);
+  });
+  let sx=null;const stage=document.getElementById('photoStage');
+  stage.addEventListener('pointerdown',e=>{sx=e.clientX;});
+  stage.addEventListener('pointerup',e=>{
+    if(sx===null)return;const dx=e.clientX-sx;sx=null;
+    if(Math.abs(dx)>40)show(cur+(dx<0?1:-1),dx<0?1:-1);
   });
   document.getElementById('again').addEventListener('click',()=>{
     document.body.classList.remove('read');env.classList.remove('open');
