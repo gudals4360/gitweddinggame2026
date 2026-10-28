@@ -93,6 +93,7 @@ body.read #letter-wrap{display:block}
 .card > .stamp{right:-16px;top:-52px;transform:rotate(8deg);--hole:#000}
 .again{display:block;margin:60px auto 0;background:none;border:1px solid #3a4a4c;color:var(--mint);
   padding:11px 26px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:300;letter-spacing:.2em;cursor:pointer;transition:background .3s}
+a.again{text-decoration:none;width:max-content;text-align:center}
 .again:hover{background:rgba(191,224,227,.1)}
 /* ───── 우표 → 사진첩 유도 ───── */
 button.stamp{background:none;border:0;padding:0;cursor:pointer;transition:filter .3s}
@@ -120,9 +121,6 @@ button.stamp{background:none;border:0;padding:0;cursor:pointer;transition:filter
 .stamp-tip::after{content:"";position:absolute;right:-6px;top:50%;margin-top:-6px;border:6px solid transparent;border-left:8px solid var(--mint);border-right:0}
 @keyframes nudge{50%{transform:translateX(6px)}}
 .card.seen .stamp-tip{display:none}
-.album-pill{display:block;margin:20px auto 0;background:none;border:1px solid var(--mint-deep);color:#2d6a70;
-  padding:8px 18px;border-radius:999px;font:inherit;font-size:.8rem;font-weight:500;cursor:pointer;transition:background .3s}
-.album-pill:hover{background:var(--mint)}
 
 /* ───── 사진첩 ───── */
 .album{position:fixed;inset:0;z-index:50;display:none;place-items:center;background:rgba(0,0,0,.94);padding:16px}
@@ -198,7 +196,6 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
       <div class="inner">
         <div class="kicker">A LETTER OF PROPOSAL</div>
         <div class="sub">From. Christian &nbsp;/&nbsp; To. Roxane</div>
-        <button class="album-pill" id="albumPill">우리의 사진첩 보기</button>
         <h1 class="title">Dear<br>Roxane</h1>
         <div class="to">사랑하는 록산느에게,</div>
     <p class="first">오늘 밤, 이 편지를 펼친 당신의 손끝에 제 마음이 먼저 닿기를 바랍니다. 저는 크리스티앙입니다. 말보다 가슴이 먼저 뛰는 사람, 당신 앞에서는 가장 아끼는 단어마저 도망쳐 버리는 사람입니다. 그래서 오래 망설인 끝에, 가장 정직한 방식으로 이 글을 씁니다.</p>
@@ -211,7 +208,8 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
       </div>
       <div class="ribbon bottom"><div><span>Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ </span><span>Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ Christian ★ Roxane ★ </span></div></div>
     </article>
-    <button class="again" id="again">FOLD AGAIN</button>
+    <a class="again persona-link" href="persona.html">MEET THE TWO OF US →</a>
+    <button class="again" id="again" style="margin-top:18px">FOLD AGAIN</button>
     <footer>
       Git 협업 “구혼편지” 수정 게임 · Mission: 친구 도움을 받아 프로포즈 계획하기<br>
       feature branch → Pull Request &amp; Review → Release
@@ -276,7 +274,6 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
     document.getElementById('stampBtn').focus();
   }
   document.getElementById('stampBtn').addEventListener('click',openAlbum);
-  document.getElementById('albumPill').addEventListener('click',openAlbum);
   document.getElementById('albumClose').addEventListener('click',closeAlbum);
   document.getElementById('prevPhoto').addEventListener('click',()=>show(cur-1,-1));
   document.getElementById('nextPhoto').addEventListener('click',()=>show(cur+1,1));
