@@ -1,0 +1,65 @@
+/* 색·그림자 : 글자색, 배경색, 그림자 */
+/* ───── 색 이름표 (여기서 색을 바꾸면 페이지 전체에 적용) ───── */
+:root{
+  --black:#000; --white:#fff;
+  --mint:#bfe0e3; --mint-2:#a9d2d6; --mint-3:#cfe9eb; --mint-deep:#8fbfc4;
+  --ink:#0d0d0d; --ink-soft:#5b6a6c;
+}
+body{background:var(--black);color:var(--ink)}
+
+/* ───── 우표 ───── */
+.stamp{filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+
+/* ───── 봉투 장면 ───── */
+.envelope{background:none;color:var(--ink)}
+.env-back{background:var(--mint-2)}
+.paper-peek{background:var(--white)}
+.paper-peek .date{color:#444}
+.pk.l{background:#b4d8dc}
+.pk.r{background:#b9dce0}
+.pk.b{background:var(--mint)}
+.flap{background:var(--mint-3)}
+.env-shadow{filter:drop-shadow(0 30px 50px rgba(110,170,176,.25))}
+.hint{color:#8aa}
+
+/* ───── 편지 ───── */
+.card{background:var(--white);box-shadow:0 0 90px rgba(191,224,227,.18)}
+.kicker + .sub{color:#555}
+.card p{color:#1a1a1a}
+.card p.ask{background:var(--mint)}
+.card p.feedback{background:#f1f9fa}
+.sign{color:var(--ink-soft)}
+.sign b{color:var(--ink)}
+.again{background:none;color:var(--mint)}
+
+/* ───── 우표 → 사진첩 유도 ───── */
+button.stamp{background:none}
+.sp{color:#fff;text-shadow:0 0 8px var(--mint)}
+.stamp-tip{background:var(--mint);color:var(--ink)}
+
+/* ───── 사진첩 책 ───── */
+.book-btn{background:none;filter:drop-shadow(0 8px 12px rgba(0,0,0,.4))}
+.album{background:rgba(0,0,0,.94)}
+.album-wrap{color:#fff}
+.album-kicker{color:var(--mint)}
+.book{filter:drop-shadow(0 26px 40px rgba(191,224,227,.14))}
+.board-l,.board-r{background:linear-gradient(135deg,#a9d2d6,#7fb0b6)}
+.end-front{background:linear-gradient(135deg,#bfe0e3,#8fbfc4);color:var(--ink)}
+.backcover{background:linear-gradient(225deg,#c9e6e8,#9cc9ce 60%,#86b6bb);color:var(--ink)}
+.face::after{background:linear-gradient(90deg,rgba(0,0,0,.24),transparent 9%)}
+.face.back::after{background:linear-gradient(270deg,rgba(0,0,0,.24),transparent 9%)}
+.pg{background:#fff;color:var(--ink)}
+.pg .ph{background:#dfeeef}
+.pg .cap span{color:#555}
+.pg.center small{color:#666}
+.cover{background:linear-gradient(135deg,#c9e6e8,#9cc9ce 60%,#86b6bb);color:var(--ink)}
+.cover::after{background:linear-gradient(90deg,rgba(0,0,0,.3),transparent 10%)}
+.ribbon-bm{background:#8a2332}
+.album-nav button{background:none;color:var(--mint)}
+.dots i{background:#3a4a4c}
+.dots i.on{background:var(--mint)}
+.album-close{background:none;color:#fff}
+.replay{background:none;color:var(--mint)}
+.count{color:#7d9193}
+footer{color:#6d7f81}
+.sound{background:rgba(0,0,0,.45);color:var(--mint)}
