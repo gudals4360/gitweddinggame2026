@@ -131,7 +131,7 @@ button.stamp{background:none;border:0;padding:0;cursor:pointer;transition:filter
 @keyframes fade{from{opacity:0}}
 .album-wrap{width:100%;text-align:center;color:#fff}
 .album-kicker{font-size:.72rem;font-weight:700;letter-spacing:.34em;color:var(--mint);margin-bottom:18px}
-.book{--pw:min(340px,43vw,calc((100vh - 250px)*.75));position:relative;width:calc(var(--pw)*2);height:calc(var(--pw)*1.333);
+.book{--pw:min(340px,43vw,calc((100vh - 300px)*.75));position:relative;width:calc(var(--pw)*2);height:calc(var(--pw)*1.333);
   margin:0 auto;perspective:2400px;transform-style:preserve-3d;transform:translateX(calc(var(--pw)*-.5));
   transition:transform .9s cubic-bezier(.4,.1,.2,1);filter:drop-shadow(0 26px 40px rgba(191,224,227,.14));cursor:pointer}
 .book:not([data-s="0"]){transform:none}
@@ -149,6 +149,7 @@ button.stamp{background:none;border:0;padding:0;cursor:pointer;transition:filter
 .leaf{position:absolute;right:0;top:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;
   transition:transform 1s cubic-bezier(.45,.05,.25,1)}
 .leaf.flip{transform:rotateY(-180deg)}
+.book.fast .leaf{transition-duration:.5s}
 .face{position:absolute;inset:0;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .face.back{transform:rotateY(180deg)}
 .face::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.24),transparent 9%)}
@@ -178,6 +179,9 @@ button.stamp{background:none;border:0;padding:0;cursor:pointer;transition:filter
 .dots i.on{background:var(--mint);width:22px;border-radius:4px}
 .album-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border-radius:50%;border:1px solid #3a4a4c;background:none;color:#fff;font-size:1.3rem;cursor:pointer}
 .album-close:hover{background:rgba(255,255,255,.1)}
+.replay{margin-top:18px;background:none;border:1px solid var(--mint-deep);color:var(--mint);padding:10px 24px;border-radius:999px;font:inherit;font-size:.82rem;font-weight:500;letter-spacing:.1em;cursor:pointer;transition:background .3s;animation:fade .6s ease}
+.replay:hover{background:rgba(191,224,227,.14)}
+.replay[hidden]{display:none}
 .count{margin-top:12px;font-size:.72rem;font-weight:300;letter-spacing:.24em;color:#7d9193}
 @media (prefers-reduced-motion:reduce){.leaf,.book{transition-duration:.01s}}
 footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-weight:300;letter-spacing:.06em;line-height:2}
@@ -284,6 +288,7 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
       <button id="nextPhoto" aria-label="다음 페이지">→</button>
     </div>
     <div class="count" id="count"></div>
+    <button class="replay" id="replay" hidden>↺ 처음부터 다시 보기</button>
   </div>
 </div>
 
@@ -311,20 +316,23 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
       const f=s>i,was=l.classList.contains('flip');
       l.classList.toggle('flip',f);
       const z=(f?i+1:N-i)+2;
-      if(f!==was&&!instant)setTimeout(()=>{l.style.zIndex=z;},450);else l.style.zIndex=z;
+      if(f!==was&&!instant)setTimeout(()=>{l.style.zIndex=z;},book.classList.contains("fast")?230:450);else l.style.zIndex=z;
     });
     [...dotsEl.children].forEach((d,k)=>d.classList.toggle('on',k===s));
     document.getElementById('count').textContent=labels[s];
+    document.getElementById('replay').hidden=s<N-1;
   }
   function go(n){
     clearInterval(timer);
     const target=Math.max(0,Math.min(N,n));
+    const fast=Math.abs(target-s)>1;
+    book.classList.toggle("fast",fast);
     const step=()=>{
       if(s===target){clearInterval(timer);return;}
       s+=s<target?1:-1;render();
     };
     step();
-    timer=setInterval(step,420);
+    timer=setInterval(step,fast?200:420);
   }
   function back(){go(s===N?0:s-1);}
   function openAlbum(){
@@ -342,6 +350,7 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
   }
   document.getElementById('stampBtn').addEventListener('click',openAlbum);
   document.getElementById('albumClose').addEventListener('click',closeAlbum);
+  document.getElementById('replay').addEventListener('click',()=>go(0));
   document.getElementById('prevPhoto').addEventListener('click',()=>back());
   document.getElementById('nextPhoto').addEventListener('click',()=>go(s+1));
   album.addEventListener('click',e=>{if(e.target===album)closeAlbum();});
