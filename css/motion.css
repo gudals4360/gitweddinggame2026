@@ -1,0 +1,71 @@
+/* 움직임·상태 변화 : 애니메이션, 전환 효과, 봉투 열림·책장 넘김·마우스 올림 상태 */
+/* ───── 리본 문구 ───── */
+.ribbon div{animation:marquee 28s linear infinite}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ───── 봉투 장면 ───── */
+#stage{transition:opacity .8s ease,transform .8s ease}
+.tilt{transition:transform .9s ease}
+.envelope{transition:transform .5s ease}
+.envelope:hover{transform:translateY(-5px)}
+.paper-peek{transition:transform 1.1s cubic-bezier(.3,.7,.2,1) .7s}
+.flap{transition:transform .85s ease,z-index 0s .42s}
+.envelope .stamp{transition:transform .6s ease}
+.envelope.open .flap{transform:rotateX(180deg);z-index:1;background:var(--mint-deep)}
+.envelope.open .paper-peek{transform:translateY(-60%)}
+.envelope.open .stamp{transform:rotate(7deg) translateY(10px)}
+.envelope.open{cursor:default;transform:none}
+.hint{animation:pulse 2.2s ease-in-out infinite}
+#stage.opened .hint{opacity:0;animation:none}
+@keyframes pulse{50%{opacity:.3}}
+body.read #stage{opacity:0;transform:translateY(40px);height:0;padding:0;overflow:hidden;pointer-events:none}
+
+/* ───── 편지 ───── */
+body.read #letter-wrap{display:block}
+.card{animation:rise 1s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.again{transition:background .3s}
+.again:hover{background:rgba(191,224,227,.1)}
+
+/* ───── 우표 → 사진첩 유도 ───── */
+button.stamp{transition:filter .3s}
+.album-btn:hover{filter:drop-shadow(0 0 16px rgba(191,224,227,.9))}
+.card:not(.seen) .album-btn{animation:wobble 4.2s ease-in-out 1.4s infinite}
+@keyframes wobble{0%,58%,100%{transform:rotate(8deg) scale(1)}
+  64%{transform:rotate(15deg) scale(1.09)}
+  70%{transform:rotate(1deg) scale(1.09)}
+  76%{transform:rotate(13deg) scale(1.05)}
+  84%{transform:rotate(8deg) scale(1)}}
+.card:not(.seen) .album-btn::after{animation:ring 2.4s ease-out 1.4s infinite}
+@keyframes ring{0%{opacity:.9;transform:scale(.92)}100%{opacity:0;transform:scale(1.25)}}
+.card:not(.seen) .sp{animation:twinkle 2.2s ease-in-out 1.4s infinite}
+.sp.s2{animation-delay:2s !important}
+.sp.s3{animation-delay:2.6s !important}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4) rotate(0)}50%{opacity:1;transform:scale(1.2) rotate(40deg)}}
+.stamp-tip{animation:nudge 1.6s ease-in-out 1.4s infinite}
+@keyframes nudge{50%{transform:translateX(6px)}}
+
+/* ───── 사진첩 책 ───── */
+.book-btn{transition:filter .3s}
+.album.show{animation:fade .35s ease}
+@keyframes fade{from{opacity:0}}
+.book{transition:transform .9s cubic-bezier(.4,.1,.2,1)}
+.book:not([data-s="0"]){transform:none}
+.book[data-s="5"]{transform:translateX(calc(var(--pw)*.5))}
+.board-l{transition:opacity .6s}
+.board-r{transition:opacity .6s}
+.book[data-s="5"] .board-r{opacity:0}
+.book[data-s="0"] .board-l{opacity:0}
+.leaf{transition:transform 1s cubic-bezier(.45,.05,.25,1)}
+.leaf.flip{transform:rotateY(-180deg)}
+.book.fast .leaf{transition-duration:.5s}
+.album-nav button{transition:background .3s}
+.album-nav button:hover{background:rgba(191,224,227,.14)}
+.dots i{transition:all .3s}
+.album-close:hover{background:rgba(255,255,255,.1)}
+.replay{transition:background .3s;animation:fade .6s ease}
+.replay:hover{background:rgba(191,224,227,.14)}
+@media (prefers-reduced-motion:reduce){.leaf,.book{transition-duration:.01s}}
+@media (prefers-reduced-motion:reduce){.ribbon div,.hint,.stamp-tip,.sp,.album-btn,.album-btn::after{animation:none !important}.card{animation:none}}
+.sound{transition:background .3s}
+.sound:hover{background:rgba(191,224,227,.12)}

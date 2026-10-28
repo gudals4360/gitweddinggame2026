@@ -1,0 +1,59 @@
+/* 글꼴·글씨 : 글꼴 종류, 글씨 크기, 굵기, 자간, 줄 간격 */
+@font-face{
+  font-family:"OngleIpSeaBreeze";
+  src:local("온글잎 바닷바람"),local("Ownglyph the sea breeze"),local("Ownglyph_the_sea_breeze-Rg"),
+      url("https://cdn.jsdelivr.net/gh/projectnoonnu/2510-1@1.0/Ownglyph_the_sea_breeze-Rg.woff2") format("woff2");
+  font-weight:normal;font-display:swap;
+}
+body{font-family:"OngleIpSeaBreeze","온글잎 바닷바람","Gowun Batang",serif}
+
+/* ───── 리본 문구 ───── */
+.ribbon{font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
+
+/* ───── 봉투 장면 ───── */
+.envelope{font:inherit}
+.paper-peek .meta{font-size:.82rem;font-weight:700;letter-spacing:.06em}
+.paper-peek .date{font-size:.78rem;font-weight:300}
+.paper-peek .big{font-weight:200;font-size:clamp(2.6rem,11vw,4.4rem);line-height:.98;letter-spacing:-.04em}
+.front-text small{font-size:.62rem;font-weight:700;line-height:1.5;letter-spacing:.06em}
+.front-text b{font-weight:300;font-size:clamp(1.8rem,8vw,3rem);letter-spacing:-.04em;line-height:1.05}
+.hint{font-size:.85rem;font-weight:300;letter-spacing:.3em}
+
+/* ───── 편지 ───── */
+.kicker{font-size:1rem;font-weight:700;letter-spacing:.2em}
+.kicker + .sub{font-size:1rem;font-weight:300}
+.title{font-weight:200;font-size:clamp(3rem,13vw,5.6rem);line-height:.95;letter-spacing:-.05em}
+.to{font-weight:700;font-size:1.6rem}
+.card p{font-size:1.32rem;line-height:1.95;font-weight:400}
+.card p.ask{font-weight:700;font-size:1.5rem;line-height:1.8}
+.card p.feedback{font-size:1.25rem}
+.sign{line-height:1.8;font-size:1.25rem}
+.sign b{font-weight:900;font-size:1.75rem;letter-spacing:-.01em}
+.again{font:inherit;font-size:.85rem;font-weight:300;letter-spacing:.2em}
+
+/* ───── 우표 → 사진첩 유도 ───── */
+.sp{font-style:normal;font-size:16px;line-height:1}
+.sp.s2{font-size:12px}
+.sp.s3{font-size:11px}
+.stamp-tip{font-size:.78rem;font-weight:700;letter-spacing:.02em}
+
+/* ───── 사진첩 책 ───── */
+.album-kicker{font-size:.72rem;font-weight:700;letter-spacing:.34em}
+.end-front{font-size:.72rem;font-weight:700;letter-spacing:.3em}
+.backcover small{font-size:clamp(.5rem,1.5vw,.66rem);font-weight:700;letter-spacing:.3em}
+.backcover b{font-weight:200;font-size:clamp(1.1rem,4vw,1.8rem);letter-spacing:-.04em;line-height:1.1}
+.pg .cap{line-height:1.35}
+.pg .cap b{font-size:clamp(.66rem,2.2vw,.95rem);font-weight:700}
+.pg .cap span{font-size:clamp(.58rem,1.7vw,.74rem);font-weight:300}
+.pg.center b{font-weight:200;font-size:clamp(1rem,3.6vw,1.6rem);letter-spacing:-.03em;line-height:1.5}
+.pg.center small{font-size:clamp(.58rem,1.7vw,.74rem);font-weight:300;line-height:1.8}
+.cover small{font-size:clamp(.5rem,1.5vw,.66rem);font-weight:700;letter-spacing:.3em}
+.cover b{font-weight:200;font-size:clamp(1.5rem,5.4vw,2.6rem);letter-spacing:-.04em;line-height:1}
+.cover i{font-style:normal;font-size:clamp(.6rem,1.8vw,.8rem);font-weight:500}
+.album-nav button{font-size:1.1rem}
+.album-close{font-size:1.3rem}
+.replay{font:inherit;font-size:.82rem;font-weight:500;letter-spacing:.1em}
+.count{font-size:.72rem;font-weight:300;letter-spacing:.24em}
+footer{font-size:.95rem;font-weight:300;letter-spacing:.06em;line-height:2}
+@media (max-width:480px){.stamp-tip{font-size:.72rem}}
+@media (max-width:480px){.card p{line-height:1.95}}
