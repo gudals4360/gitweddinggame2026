@@ -326,6 +326,7 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
     step();
     timer=setInterval(step,420);
   }
+  function back(){go(s===N?0:s-1);}
   function openAlbum(){
     album.hidden=false;album.classList.add('show');document.body.style.overflow='hidden';
     card.classList.add('seen');
@@ -341,26 +342,26 @@ footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-wei
   }
   document.getElementById('stampBtn').addEventListener('click',openAlbum);
   document.getElementById('albumClose').addEventListener('click',closeAlbum);
-  document.getElementById('prevPhoto').addEventListener('click',()=>go(s-1));
+  document.getElementById('prevPhoto').addEventListener('click',()=>back());
   document.getElementById('nextPhoto').addEventListener('click',()=>go(s+1));
   album.addEventListener('click',e=>{if(e.target===album)closeAlbum();});
   let swiped=false;
   book.addEventListener('click',e=>{
     if(swiped){swiped=false;return;}
     const r=book.getBoundingClientRect();
-    if(s===0||e.clientX>r.left+r.width/2)go(s+1);else go(s-1);
+    if(s===0||e.clientX>r.left+r.width/2)go(s+1);else back();
   });
   document.addEventListener('keydown',e=>{
     if(!album.classList.contains('show'))return;
     if(e.key==='Escape')closeAlbum();
-    if(e.key==='ArrowLeft')go(s-1);
+    if(e.key==='ArrowLeft')back();
     if(e.key==='ArrowRight')go(s+1);
   });
   let sx=null;
   book.addEventListener('pointerdown',e=>{sx=e.clientX;});
   book.addEventListener('pointerup',e=>{
     if(sx===null)return;const dx=e.clientX-sx;sx=null;
-    if(Math.abs(dx)>50){swiped=true;go(s+(dx<0?1:-1));}
+    if(Math.abs(dx)>50){swiped=true;(dx<0?go(s+1):back());}
   },true);
   render(true);
 document.getElementById('again').addEventListener('click',()=>{
