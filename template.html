@@ -11,8 +11,13 @@
 <meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
+@font-face{
+  font-family:"OngleIpSeaBreeze";
+  src:local("온글잎 바닷바람"),local("Ownglyph the sea breeze"),local("Ownglyph_the_sea_breeze-Rg"),
+      url("https://cdn.jsdelivr.net/gh/projectnoonnu/2510-1@1.0/Ownglyph_the_sea_breeze-Rg.woff2") format("woff2");
+  font-weight:normal;font-display:swap;
+}
 :root{
   --black:#000; --white:#fff;
   --mint:#bfe0e3; --mint-2:#a9d2d6; --mint-3:#cfe9eb; --mint-deep:#8fbfc4;
@@ -22,7 +27,7 @@
 html{scroll-behavior:smooth}
 body{
   min-height:100vh;background:var(--black);color:var(--ink);overflow-x:hidden;
-  font-family:"Noto Sans KR","Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-family:"OngleIpSeaBreeze","온글잎 바닷바람","Gowun Batang",serif;
   padding:0 16px 80px;
 }
 svg.defs{position:absolute;width:0;height:0}
@@ -81,20 +86,20 @@ body.read #letter-wrap{display:block}
 .card .ribbon{padding:18px 0;border-bottom:1px solid #e3eeef}
 .card .ribbon.bottom{border-bottom:0;border-top:1px solid #e3eeef;margin-top:56px;padding-bottom:0}
 .inner{padding:46px clamp(22px,7vw,64px) 0;position:relative}
-.kicker{text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.2em}
-.kicker + .sub{text-align:center;font-size:.78rem;font-weight:300;color:#555;margin-top:4px}
+.kicker{text-align:center;font-size:1rem;font-weight:700;letter-spacing:.2em}
+.kicker + .sub{text-align:center;font-size:1rem;font-weight:300;color:#555;margin-top:4px}
 .title{font-weight:200;font-size:clamp(3rem,13vw,5.6rem);line-height:.95;letter-spacing:-.05em;text-align:center;margin:34px 0 46px}
-.to{font-weight:700;font-size:1.2rem;margin-bottom:22px}
-.card p{font-size:1rem;line-height:2.05;font-weight:400;margin-bottom:1.3em;word-break:keep-all;color:#1a1a1a}
-.card p.ask{margin:2.2em 0;padding:24px 22px;background:var(--mint);font-weight:700;font-size:1.12rem;line-height:1.9;text-align:center}
-.card p.feedback{margin-top:2em;padding:20px 22px;border:1px solid var(--mint-deep);background:#f1f9fa;font-size:.95rem}
-.sign{margin-top:44px;text-align:right;color:var(--ink-soft);line-height:1.8;font-size:.95rem}
-.sign b{display:block;font-weight:900;font-size:1.3rem;color:var(--ink);letter-spacing:-.01em}
+.to{font-weight:700;font-size:1.6rem;margin-bottom:22px}
+.card p{font-size:1.32rem;line-height:1.95;font-weight:400;margin-bottom:1.3em;word-break:keep-all;color:#1a1a1a}
+.card p.ask{margin:2.2em 0;padding:24px 22px;background:var(--mint);font-weight:700;font-size:1.5rem;line-height:1.8;text-align:center}
+.card p.feedback{margin-top:2em;padding:20px 22px;border:1px solid var(--mint-deep);background:#f1f9fa;font-size:1.25rem}
+.sign{margin-top:44px;text-align:right;color:var(--ink-soft);line-height:1.8;font-size:1.25rem}
+.sign b{display:block;font-weight:900;font-size:1.75rem;color:var(--ink);letter-spacing:-.01em}
 .card > .stamp{right:-16px;top:-52px;transform:rotate(8deg);--hole:#000}
 .again{display:block;margin:60px auto 0;background:none;border:1px solid #3a4a4c;color:var(--mint);
   padding:11px 26px;border-radius:999px;font:inherit;font-size:.85rem;font-weight:300;letter-spacing:.2em;cursor:pointer;transition:background .3s}
 .again:hover{background:rgba(191,224,227,.1)}
-footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.75rem;font-weight:300;letter-spacing:.06em;line-height:2}
+footer{text-align:center;margin-top:60px;color:#6d7f81;font-size:.95rem;font-weight:300;letter-spacing:.06em;line-height:2}
 @media (max-width:480px){.card > .stamp{right:-6px;width:74px;height:92px}.card p{line-height:1.95}}
 @media (prefers-reduced-motion:reduce){.ribbon div,.hint{animation:none}.card{animation:none}}
 </style>
