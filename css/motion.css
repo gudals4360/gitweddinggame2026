@@ -69,3 +69,13 @@ button.stamp{transition:filter .3s}
 @media (prefers-reduced-motion:reduce){.ribbon div,.hint,.stamp-tip,.sp,.album-btn,.album-btn::after{animation:none !important}.card{animation:none}}
 .sound{transition:background .3s}
 .sound:hover{background:rgba(191,224,227,.12)}
+
+/* ───── 사진첩 : 띠지와 손으로 넘기기 ───── */
+.book.hand .leaf{transition:none}
+.album.show .book-holder{animation:placeBook .8s cubic-bezier(.2,.9,.25,1.05) both}
+@keyframes placeBook{from{opacity:0;transform:translateY(70px) rotate(-5deg)}to{opacity:1;transform:none}}
+.band:not(.pulling) .band-tab{animation:tug 1.3s ease-in-out .6s infinite}
+@keyframes tug{50%{translate:-6px 0}}
+.drag-hint{transition:opacity .4s}
+.drag-hint:not(.off){animation:pulse 2.2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.album.show .book-holder,.band-tab,.drag-hint{animation:none !important}}

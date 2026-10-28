@@ -63,3 +63,17 @@ button.stamp{background:none}
 .count{color:#7d9193}
 footer{color:#6d7f81}
 .sound{background:rgba(0,0,0,.45);color:var(--mint)}
+
+/* ───── 사진첩 : 띠지와 손으로 넘기기 ───── */
+.band{filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.band .top-in,.band .top-out{color:var(--ink);background:linear-gradient(#f4ead6,#f4ead6) top/100% 34px no-repeat,linear-gradient(135deg,#f4ead6 50%,transparent 50%) left bottom/8px 6px repeat-x}
+.band .bot-in,.band .bot-out{background:linear-gradient(-45deg,#efe3cb 50%,transparent 50%) left top/8px 6px repeat-x,linear-gradient(#efe3cb,#efe3cb) bottom/100% 22px no-repeat}
+.band .tape{background:linear-gradient(#8a2332 0 3px,rgba(255,255,255,.6) 3px 4px,#8a2332 4px)}
+.band .loose-t{fill:none;stroke:#8a2332;stroke-width:8;stroke-linecap:round}
+.band .loose-s{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1}
+.band-tab{background:#8a2332;color:#fff;box-shadow:0 3px 8px rgba(0,0,0,.4)}
+.cast.r{background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.18) 35%,transparent 75%)}
+.cast.l{background:linear-gradient(270deg,rgba(0,0,0,.55),rgba(0,0,0,.18) 35%,transparent 75%)}
+.face .shade{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,.12) 45%,rgba(255,255,255,.2))}
+.face.back .shade{background:linear-gradient(270deg,rgba(0,0,0,.5),rgba(0,0,0,.12) 45%,rgba(255,255,255,.2))}
+.drag-hint{color:#9fb6b8}
