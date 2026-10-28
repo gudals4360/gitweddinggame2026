@@ -77,3 +77,10 @@ footer{color:#6d7f81}
 .face .shade{background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(0,0,0,.12) 45%,rgba(255,255,255,.2))}
 .face.back .shade{background:linear-gradient(270deg,rgba(0,0,0,.5),rgba(0,0,0,.12) 45%,rgba(255,255,255,.2))}
 .drag-hint{color:#9fb6b8}
+
+/* ───── 봉투 : 손으로 뜯어 열기 ───── */
+.scrap{background:linear-gradient(transparent 0 86%,#fbfdfd 86% 89.6%,var(--mint-3) 89.6%)}
+.envelope.torn .flap{background:linear-gradient(var(--mint-3) 0 85.5%,#fbfdfd 85.5%)}
+.glue{background:repeating-linear-gradient(90deg,rgba(255,255,255,.95) 0 1.5px,transparent 1.5px 4px);
+  -webkit-mask:linear-gradient(transparent,#000 35%,#000 70%,transparent);mask:linear-gradient(transparent,#000 35%,#000 70%,transparent)}
+.flap-shadow{background:linear-gradient(rgba(20,50,55,.15),rgba(20,50,55,.55))}
